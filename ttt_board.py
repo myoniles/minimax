@@ -7,7 +7,7 @@ import numpy as np
 class Cell_Value(Enum):
 	UNCLAIMED = ' '
 	PLAYER_1 = 'X'
-	PLAYER_2 = 'Y'
+	PLAYER_2 = 'O'
 
 class TTT_Board:
 
@@ -42,9 +42,18 @@ class TTT_Board:
 		return zip(*np.where(self.state == Cell_Value.UNCLAIMED))
 
 	def __str__(self):
-		"""Prints the board
-		"""
+		"""Prints the board"""
+		_ = ""
 		for row in self.state:
 			for col in row:
-				print( '|', col.value, end='' )
-			print( '|' )
+				_  = _ + '|' + str(col.value)
+			_ = _ + '|\n'
+		return _
+
+	def to_num_arr(self):
+		"""TODO: Docstring for to_num_arr.
+		:returns: TODO
+
+		"""
+		vectorized_board = np.vectorize(lambda enum: enum.value)
+		return vectorized_board(self.state)
