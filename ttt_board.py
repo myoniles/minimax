@@ -27,14 +27,10 @@ class TTT_Board:
 		players = [ _ for _ in Cell_Value if _.value != ' ']
 		for player in players:
 			# TODO: find a more elegant way to check diagonals
-			diag = \
-				np.all(np.array([self.state[0][0], self.state[1][1], self.state[2][2]]) == player) \
-				or np.all( np.array([self.state[0][2], self.state[1][1], self.state[2][0]])  == player)
-			if (\
-				np.any((np.all(np.array(self.state) == player, axis=1))) or \
-				np.any((np.all(np.array(self.state) == player, axis=0))) or \
-				diag ):
-				print(self, player)
+			diag = np.all(np.array([self.state[0][0], self.state[1][1], self.state[2][2]]) == player) or np.all( np.array([self.state[0][2], self.state[1][1], self.state[2][0]])  == player)
+			horiz = np.any((np.all(self.state == player, axis=0)))
+			vert = np.any((np.all(self.state == player, axis=1)))
+			if ( horiz or vert or diag ):
 				return player
 		return Cell_Value.UNCLAIMED
 
@@ -59,16 +55,12 @@ class TTT_Board:
 		:returns: TODO
 
 		"""
-		vectorized_board = np.vectorize(lambda enum: enum.value)
+		translation_dict = { Cell_Value.PLAYER_1.value:-1,Cell_Value.PLAYER_2.value:1, Cell_Value.UNCLAIMED.value:0 }
+		vectorized_board = np.vectorize(lambda enum: translation_dict[enum.value])
 		return vectorized_board(self.state)
 
 	def update(self, move, player_value):
-		"""TODO: Docstring for update.
+		if move[0] == -1 :
+			return
+		self.state[move] = player_value
 
-		:move: TODO
-		:player: TODO
-		:returns: TODO
-
-		"""
-		self.state[move[0], move[1]] = player_value
-		pass

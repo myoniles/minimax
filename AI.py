@@ -1,4 +1,5 @@
 from ttt_board import Cell_Value, TTT_Board
+import numpy as np
 
 class Person:
 
@@ -7,10 +8,6 @@ class Person:
 	def __init__(self, player_symbol):
 		"""TODO: to be defined1. """
 		self.player_symbol= player_symbol
-
-	def update(self, board, move):
-		print(move)
-		board.state[move] = self.player_symbol
 
 	def play_turn(self, board):
 		"""TODO: Docstring for play_turn.
@@ -21,8 +18,7 @@ class Person:
 		"""
 		x_cord = input("X cord: ")
 		y_cord = input("Y cord: ")
-		self.update(board, (int(x_cord), int(y_cord)))
-		pass
+		return (int(x_cord), int(y_cord))
 
 class AI(Person):
 
@@ -53,25 +49,27 @@ class AI(Person):
 
 		"""
 		rate, move = self.minimax(board, True)
-		print(rate)
-		self.update( board, move)
+		return move
 
-	def minimax(self, board, max_player=True, max_depth=None ):
+	def minimax(self, board, max_player=True, max_depth=3 ):
 		"""TODO: Docstring for minimax.
 
 		:board: TODO
 		:returns: TODO
 
 		"""
-		# Game is over if no moves (cat's game) or already won
 		moves = board.get_moves()
-		if max_depth or moves == [] or board.check_win() != Cell_Value.UNCLAIMED:
-			print('caught', board.check_win())
-			if board.check_win() == self.player_symbol:
-				return AI.MAX_EVAL, (-1,-1)
-			else:
-				return AI.MIN_EVAL, (-1,-1)
+		if max_depth == None:
+			max_depth = len(moves)
 
+		# Game is over if no moves (cat's game) or already won
+		if max_depth < 0 or moves == [] or board.check_win() != Cell_Value.UNCLAIMED:
+			if board.check_win() == self.player_symbol:
+				return AI.MAX_EVAL * (9-max_depth), (-1,-1)
+			elif board.check_win() == Cell_Value.UNCLAIMED:
+				return self.eval(board) * (9-max_depth), (-1,-1)
+			else:
+				return AI.MIN_EVAL * (9-max_depth), (-1,-1)
 
 		possible_moves = board.get_moves()
 		best_move = None
@@ -80,9 +78,7 @@ class AI(Person):
 			for move in possible_moves:
 				test_board = TTT_Board(board)
 				test_board.state[move] = Cell_Value.PLAYER_2
-				print(test_board)
-				input()
-				move_eval, enemy_move = self.minimax( test_board, False)
+				move_eval, enemy_move = self.minimax( test_board, False, max_depth-1)
 				curr_eval = max( curr_eval, move_eval)
 				if curr_eval == move_eval:
 					best_move = move
@@ -91,9 +87,7 @@ class AI(Person):
 			for move in possible_moves:
 				test_board = TTT_Board(board)
 				test_board.state[move] = Cell_Value.PLAYER_1
-				print(test_board)
-				input()
-				move_eval , enemy_move = self.minimax( test_board, True)
+				move_eval , enemy_move = self.minimax( test_board, True, max_depth-1)
 				curr_eval = min( curr_eval, move_eval)
 				if curr_eval == move_eval:
 					best_move = move
