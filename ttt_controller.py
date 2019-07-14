@@ -12,6 +12,7 @@ if __name__ == '__main__':
 	# Play turns until win
 	while( True ):
 		print(board)
-		person_1.play_turn()
+		person_1.play_turn(board)
 		print(board)
-		person_2.play_turn()
+		person_2.play_turn(board)
+

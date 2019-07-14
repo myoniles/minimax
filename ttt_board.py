@@ -13,8 +13,11 @@ class TTT_Board:
 
 	""" Represnts the entire board, really just wraps an array"""
 
-	def __init__(self):
-		self.state = [ [Cell_Value.UNCLAIMED] * 3 ] * 3
+	def __init__(self, initial_state=None):
+		if not initial_state:
+			self.state = np.array([ [Cell_Value.UNCLAIMED] * 3 ] * 3)
+		else:
+			self.state = initial_state.state.copy()
 
 	def check_win(self):
 		"""Returns the player who has won the board.
@@ -31,6 +34,7 @@ class TTT_Board:
 				np.any((np.all(np.array(self.state) == player, axis=1))) or \
 				np.any((np.all(np.array(self.state) == player, axis=0))) or \
 				diag ):
+				print(self, player)
 				return player
 		return Cell_Value.UNCLAIMED
 
@@ -39,7 +43,7 @@ class TTT_Board:
 		:returns: [(Cell_Value), ]
 
 		"""
-		return zip(*np.where(self.state == Cell_Value.UNCLAIMED))
+		return tuple(zip(*np.where(self.state == Cell_Value.UNCLAIMED)))
 
 	def __str__(self):
 		"""Prints the board"""
@@ -57,3 +61,14 @@ class TTT_Board:
 		"""
 		vectorized_board = np.vectorize(lambda enum: enum.value)
 		return vectorized_board(self.state)
+
+	def update(self, move, player_value):
+		"""TODO: Docstring for update.
+
+		:move: TODO
+		:player: TODO
+		:returns: TODO
+
+		"""
+		self.state[move[0], move[1]] = player_value
+		pass
