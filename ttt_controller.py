@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from AI import AI, Person
 from ttt_board import Cell_Value, TTT_Board
 import numpy as np
@@ -30,5 +32,8 @@ if __name__ == '__main__':
 			player_1_move =person_1.play_turn(board)
 		board.update(player_1_move, person_1.player_symbol)
 		print('PLAYER 2 TURN\n',board, sep='')
-		board.update(person_2.play_turn(board), person_2.player_symbol)
+		player_2_move = None
+		while(player_2_move not in board.get_moves()):
+			player_2_move =person_2.play_turn(board)
+		board.update(player_2_move, person_2.player_symbol)
 
