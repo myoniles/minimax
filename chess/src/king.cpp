@@ -1,6 +1,12 @@
+#ifndef KING
+#define KING
+
+#include "king.h"
 #include "piece.h"
 
-class King: Piece {
-	King( ) : Piece( 'K' ) {
-	}
-};
+King::King(): Piece('R'){}
+
+string* King::get_possible_moves() {return NULL;}
+
+#endif
+

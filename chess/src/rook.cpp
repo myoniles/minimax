@@ -1,7 +1,11 @@
+#ifndef ROOK
+#define ROOK
+
+#include "rook.h"
 #include "piece.h"
 
-class Rook: Piece {
-	Rook( ) : Piece( 'R' ) {
-	}
-};
+Rook::Rook(): Piece('R'){}
 
+string* Rook::get_possible_moves() {return NULL;}
+
+#endif

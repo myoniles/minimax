@@ -1,7 +1,12 @@
+#ifndef PAWN
+#define PAWN
+
+#include "pawn.h"
 #include "piece.h"
 
-class Pawn: Piece {
-	Pawn( ) : Piece( 'P' ) {
-	}
-};
+Pawn::Pawn(): Piece('R'){}
+
+string* Pawn::get_possible_moves() {return NULL;}
+
+#endif
 

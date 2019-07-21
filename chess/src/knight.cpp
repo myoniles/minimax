@@ -1,7 +1,12 @@
+#ifndef KNIGHT
+#define KNIGHT
+
+#include "knight.h"
 #include "piece.h"
 
-class Knight: Piece {
-	Knight( ) : Piece( 'N' ) {
-	}
-};
+Knight::Knight(): Piece('R'){}
+
+string* Knight::get_possible_moves() {return NULL;}
+
+#endif
 
