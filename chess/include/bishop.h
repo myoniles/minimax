@@ -6,6 +6,7 @@
 class Bishop: public Piece {
 	public:
 		Bishop();
+		Bishop(Color c);
 		Position* get_possible_moves();
 };
 

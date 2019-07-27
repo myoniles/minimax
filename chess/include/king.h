@@ -6,6 +6,7 @@
 class King: public Piece {
 	public:
 		King();
+		King(Color c);
 		Position* get_possible_moves();
 };
 

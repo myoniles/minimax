@@ -3,7 +3,6 @@
 
 #include "piece.h"
 
-enum Color { white, black };
 
 class Player {
 	public:

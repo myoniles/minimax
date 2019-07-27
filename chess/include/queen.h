@@ -6,6 +6,7 @@
 class Queen: public Piece {
 	public:
 		Queen();
+		Queen(Color c);
 		Position* get_possible_moves();
 };
 

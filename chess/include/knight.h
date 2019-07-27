@@ -6,6 +6,7 @@
 class Knight: public Piece {
 	public:
 		Knight();
+		Knight(Color c);
 		Position* get_possible_moves();
 };
 
