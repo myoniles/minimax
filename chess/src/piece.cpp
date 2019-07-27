@@ -30,5 +30,7 @@ void Piece::set_position( char x_pos, int y_pos) {
 	p.y_pos = y_pos;
 }
 
+Piece::~Piece() {}
+
 #endif
 

@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include <string>
+#include <vector>
 
 class Board {
 	public:
@@ -9,8 +10,8 @@ class Board {
 		Position* get_possible_moves();
 		int evaluate();
 	private:
-		Piece* pieces_in_play;
-};
+			vector<Piece*> pieces_in_play;
+	};
 
 #endif
 

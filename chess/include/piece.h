@@ -24,7 +24,7 @@ class	Piece {
 		Color get_color( );
 		void set_position( Position position );
 		void set_position( char x_pos, int y_pos);
-		~Piece(){};
+		~Piece();
 
 	protected:
 		char symbol;
