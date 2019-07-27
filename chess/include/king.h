@@ -1,12 +1,12 @@
-#ifndef KING_DEF
-#define KING_DEF
+#ifndef KING_H
+#define KING_H
 
 #include "piece.h"
 
 class King: public Piece {
 	public:
 		King();
-		string* get_possible_moves();
+		Position* get_possible_moves();
 };
 
 #endif

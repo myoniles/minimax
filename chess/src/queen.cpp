@@ -4,9 +4,9 @@
 #include "queen.h"
 #include "piece.h"
 
-Queen::Queen(): Piece('R'){}
+Queen::Queen(): Piece('Q', 9){}
 
-string* Queen::get_possible_moves() {return NULL;}
+Position* Queen::get_possible_moves() {return NULL;}
 
 #endif
 

@@ -1,12 +1,12 @@
-#ifndef ROOK_DEF
-#define ROOK_DEF
+#ifndef ROOK_H
+#define ROOK_H
 
 #include "piece.h"
 
 class Rook: public Piece {
 	public:
 		Rook();
-		string* get_possible_moves();
+		Position* get_possible_moves();
 };
 
 

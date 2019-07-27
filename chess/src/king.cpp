@@ -4,9 +4,9 @@
 #include "king.h"
 #include "piece.h"
 
-King::King(): Piece('R'){}
+King::King(): Piece('K', 100){}
 
-string* King::get_possible_moves() {return NULL;}
+Position* King::get_possible_moves() {return NULL;}
 
 #endif
 

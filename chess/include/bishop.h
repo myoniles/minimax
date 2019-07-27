@@ -1,12 +1,12 @@
-#ifndef BISHOP_DEF
-#define BISHOP_DEF
+#ifndef BISHOP_H
+#define BISHOP_H
 
 #include "piece.h"
 
 class Bishop: public Piece {
 	public:
 		Bishop();
-		string* get_possible_moves();
+		Position* get_possible_moves();
 };
 
 #endif

@@ -4,8 +4,8 @@
 #include "rook.h"
 #include "piece.h"
 
-Rook::Rook(): Piece('R'){}
+Rook::Rook(): Piece('R', 5){}
 
-string* Rook::get_possible_moves() {return NULL;}
+Position* Rook::get_possible_moves() {return NULL;}
 
 #endif

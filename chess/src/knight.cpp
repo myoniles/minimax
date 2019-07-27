@@ -4,9 +4,9 @@
 #include "knight.h"
 #include "piece.h"
 
-Knight::Knight(): Piece('R'){}
+Knight::Knight(): Piece('N', 3){}
 
-string* Knight::get_possible_moves() {return NULL;}
+Position* Knight::get_possible_moves() {return NULL;}
 
 #endif
 

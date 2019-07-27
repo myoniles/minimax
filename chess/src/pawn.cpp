@@ -4,9 +4,9 @@
 #include "pawn.h"
 #include "piece.h"
 
-Pawn::Pawn(): Piece('R'){}
+Pawn::Pawn(): Piece('P', 1){}
 
-string* Pawn::get_possible_moves() {return NULL;}
+Position* Pawn::get_possible_moves() {return NULL;}
 
 #endif
 

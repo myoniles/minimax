@@ -1,12 +1,12 @@
-#ifndef PAWN_DEF
-#define PAWN_DEF
+#ifndef PAWN_H
+#define PAWN_H
 
 #include "piece.h"
 
 class Pawn: public Piece {
 	public:
 		Pawn();
-		string* get_possible_moves();
+		Position* get_possible_moves();
 };
 
 

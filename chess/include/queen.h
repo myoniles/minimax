@@ -1,12 +1,12 @@
-#ifndef QUEEN_DEF
-#define QUEEN_DEF
+#ifndef QUEEN_H
+#define QUEEN_H
 
 #include "piece.h"
 
 class Queen: public Piece {
 	public:
 		Queen();
-		string* get_possible_moves();
+		Position* get_possible_moves();
 };
 
 

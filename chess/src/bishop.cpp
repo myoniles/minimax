@@ -4,9 +4,9 @@
 #include "bishop.h"
 #include "piece.h"
 
-Bishop::Bishop(): Piece('R'){}
+Bishop::Bishop(): Piece('B', 3){}
 
-string* Bishop::get_possible_moves() {return NULL;}
+Position* Bishop::get_possible_moves() {return NULL;}
 
 #endif
 
